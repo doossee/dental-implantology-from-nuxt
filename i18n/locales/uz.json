@@ -128,7 +128,25 @@
         "create-review": "Sharh yaratish",
         "review-form-title": "Sharhlar formasi",
         "message-of-review": "Sharh xabari",
-        "send": "Yuborish"
+        "send": "Yuborish",
+
+        "contact-kicker": "Qabul formasi",
+        "contact-side-title": "Qabulga yozilish uchun ma'lumotlaringizni qoldiring",
+        "contact-side-description": "Administratorimiz siz bilan tez orada bog'lanib, qulay vaqt va kerakli xizmat bo'yicha yordam beradi.",
+        "contact-title": "Qabulga yozilish",
+        "contact-description": "Ma'lumotlarni to'ldiring, biz siz bilan bog'lanamiz.",
+        "full-name": "F.I.O",
+        "full-name-placeholder": "Ism familiyangiz",
+        "phone-placeholder": "+998 XX XXX XX XX",
+        "service": "Xizmat",
+        "service-placeholder": "Xizmatni tanlang",
+        "comment": "Qo'shimcha",
+        "comment-placeholder": "Izoh yoki shikoyatingizni yozing",
+        "submit": "Yuborish",
+        "submitting": "Yuborilmoqda...",
+        "note-comment": "Qo'shimcha",
+        "contact-phone": "+998 91 523 33 44",
+        "contact-hours": "Du – Sha: 09:00 – 21:00"
     },
     "404": {
         "title": "Sahifa Topilmadi",

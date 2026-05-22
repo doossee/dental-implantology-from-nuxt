@@ -1,6 +1,6 @@
 <template>
     <header class="bg-[#F1F8FF] flex items-center min-h-screen">
-        
+
         <div class="container relative pt-24 pb-10">
             <svg-tooth class="absolute" />
             <svg-tools class="absolute bottom-80 md:bottom-44 right-0" />
@@ -17,7 +17,7 @@
                         </p>
                         <svg-24-7 class="absolute z-0 right-4" />
                     </div>
-                </div> 
+                </div>
 
                 <div class="text-center sm:text-left relative z-20">
                     <app-content :subtitle="$t('home.header-subtitle')" />
@@ -28,14 +28,32 @@
             </div>
 
             <div class="relative">
-                <form @submit.prevent="handleRecord" class="relative rounded-md p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-end bg-white w-full">
-                    <app-input v-model="record.firstName" :icon="BxUser" :label="$t('form.name')" :attributes="{ required: true, placeholder: $t('form.placeholder-name')}" />
-                    <app-input v-model="record.phone" v-mask="'+############'" :icon="FePhone" :label="$t('form.phone')" :attributes="{ required: true, placeholder: $t('form.placeholder-phone')}" />
-                    <app-btn type="submit">{{ $t('form.order-call') }}</app-btn>
+                <form @submit.prevent="handleRecord(quickRecord, quickDetails)" class="relative w-full rounded-[1.75rem] border border-white/70 bg-white/90 p-6 shadow-[0_20px_60px_rgba(27,91,143,0.12)] backdrop-blur md:p-7">
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                        <app-input
+                            v-model="quickRecord.firstName"
+                            :icon="BxUser"
+                            :label="$t('form.full-name')"
+                            :attributes="{ required: true, placeholder: $t('form.full-name-placeholder') }" />
+                        <app-input
+                            v-model="quickRecord.phone"
+                            v-mask="'+############'"
+                            :icon="FePhone"
+                            :label="$t('form.phone')"
+                            :attributes="{ required: true, placeholder: $t('form.phone-placeholder'), 'v-mask': '#############' }" />
+                        <app-select
+                            v-model="quickDetails.service"
+                            :label="$t('form.service')"
+                            :items="serviceOptions"
+                            :placeholder="$t('form.service-placeholder')" />
+                        <app-btn :disabled="isSubmitting" type="submit" class="w-full rounded-full py-2! xl:mt-7">
+                            {{ isSubmitting ? $t('form.submitting') : $t('form.submit') }}
+                        </app-btn>
+                    </div>
                 </form>
             </div>
         </div>
-        
+
     </header>
 
     <main>
@@ -78,7 +96,7 @@
 
         <section class="py-0 container">
             <div class=" bg-blue-50 p-8 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
+
                 <div class="flex items-center gap-4" v-for="c,i in INDEX_STATISTICS" :key="i">
                     <div class="bg-primary-400 rounded p-4">
                         <component class="text-white w-9 h-9" :is="c.icon"></component>
@@ -123,9 +141,9 @@
             </div>
 
             <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            
+
                 <card-doctor v-for="doctor,i in doctors" :doctor="doctor" :key="i" />
-                
+
             </div>
         </section>
 
@@ -138,7 +156,7 @@
                         :title="$t('home.home-jumbotron-title')"
                         :description="$t('home.home-jumbotron-description')">
                     </app-content>
-                    
+
                 </div>
 
             </div>
@@ -153,32 +171,87 @@
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $t('home.home-faqs-title') }}</h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-sm">{{ $t('home.home-faqs-description') }}</p>
             </div>
-            
+
             <app-faqs />
         </section>
 
-        <section class="py-24 container" id="contacts">           
+        <section class="py-24 container" id="contacts">
+            <div class="overflow-hidden rounded-[2rem] bg-[#1297cc] shadow-[0_30px_80px_rgba(11,76,116,0.24)]">
+                <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(480px,520px)]">
 
-            <div class="bg-[#f1f8ff] md:mt-16 rounded-2xl p-6 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                    <!-- Left info panel -->
+                    <div class="relative overflow-hidden bg-[linear-gradient(180deg,#4e8fc6_0%,#437daf_100%)] px-8 py-10 md:px-12 md:py-14">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.24),transparent_42%)]"></div>
+                        <div class="absolute inset-y-0 right-0 hidden w-px bg-white/20 lg:block"></div>
+                        <div class="relative z-10 flex h-full flex-col justify-center gap-8 text-white">
+                            <nuxt-img src="/logo.svg" alt="Dental Implantology" class="w-full max-w-[280px] object-contain brightness-0 invert" />
+                            <div class="space-y-4">
+                                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">{{ $t('form.contact-kicker') }}</p>
+                                <h2 class="text-2xl font-bold leading-snug md:text-3xl">{{ $t('form.contact-side-title') }}</h2>
+                                <p class="text-sm leading-7 text-white/80">{{ $t('form.contact-side-description') }}</p>
+                            </div>
+                            <ul class="space-y-3 text-sm text-white/90">
+                                <li class="flex items-center gap-3">
+                                    <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
+                                        <FeMapPin class="w-4 h-4 text-white" />
+                                    </span>
+                                    <span>{{ $t('footer.address') }}</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <a href="tel:+998915233344" class="flex items-center gap-3">
+                                        <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
+                                            <FePhone class="w-4 h-4 text-white" />
+                                        </span>
+                                        <span>{{ $t('form.contact-phone') }}</span>
+                                    </a>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
+                                        <FeClock class="w-4 h-4 text-white" />
+                                    </span>
+                                    <span>{{ $t('form.contact-hours') }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-                <svg-tooth class="absolute z-0 bottom-5 left-[25%] -rotate-45 scale-90" />
-                <svg-tools class="absolute bottom-32 left-[44%]" />
-                <app-content
-                    :subtitle="$t('contacts.form-title')"
-                    :title="$t('contacts.title')"
-                    :description="$t('contacts.description')">
-                    <form @submit.prevent="handleRecord" class="md:w-[60%] mt-2 relative grid gap-4">
-                        <app-input v-model="record.firstName" :attributes="{ required: true, placeholder: $t('form.placeholder-name') }" />
-                        <app-input v-model="record.phone" v-mask="'+############'" :attributes="{ required: true, placeholder: $t('form.placeholder-phone'), 'v-mask': '#############' }" />
-                        <app-btn type="submit">{{ $t('form.order-call') }}</app-btn>
-                    </form>
-                </app-content>
-                <div class="relative w-full hidden md:block">
-                    <nuxt-img class="relative md:absolute -bottom-10 h-[135%] w-[135%] object-contain" src="/images/DSCF0029.webp" />
+                    <!-- Right form panel -->
+                    <div class="bg-white px-6 py-8 md:px-10 md:py-12">
+                        <div class="mb-6 space-y-2">
+                            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">{{ $t('form.contact-kicker') }}</p>
+                            <h3 class="text-2xl font-semibold text-slate-800">{{ $t('form.contact-title') }}</h3>
+                            <p class="text-sm leading-6 text-slate-500">{{ $t('form.contact-description') }}</p>
+                        </div>
+                        <form @submit.prevent="handleRecord(contactRecord, contactDetails)" class="grid gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <app-input
+                                    v-model="contactRecord.firstName"
+                                    :label="$t('form.full-name')"
+                                    :attributes="{ required: true, placeholder: $t('form.full-name-placeholder') }" />
+                                <app-input
+                                    v-model="contactRecord.phone"
+                                    v-mask="'+############'"
+                                    :label="$t('form.phone')"
+                                    :attributes="{ required: true, placeholder: $t('form.phone-placeholder'), 'v-mask': '#############' }" />
+                            </div>
+                            <app-select
+                                v-model="contactDetails.service"
+                                :label="$t('form.service')"
+                                :items="serviceOptions"
+                                :placeholder="$t('form.service-placeholder')" />
+                            <app-textarea
+                                v-model="contactDetails.comment"
+                                :label="$t('form.comment')"
+                                :placeholder="$t('form.comment-placeholder')"
+                                :rows="4" />
+                            <app-btn :disabled="isSubmitting" type="submit" class="mt-2 w-full rounded-full !py-3.5">
+                                {{ isSubmitting ? $t('form.submitting') : $t('form.submit') }}
+                            </app-btn>
+                        </form>
+                    </div>
+
                 </div>
-
             </div>
-
         </section>
     </main>
 </template>
@@ -186,7 +259,7 @@
 <script setup lang="ts">
 import type { InitialRecord } from '@/types'
 import { INDEX_CARDS, INDEX_STATISTICS, SLIDER_IMAGES, SERVICES } from '@/constants'
-import { BxSolidBadgeCheck, BxUser, FePhone, AkChevronRightSmall, } from '@kalimahapps/vue-icons'
+import { BxSolidBadgeCheck, BxUser, FePhone, FeMapPin, FeClock, AkChevronRightSmall, } from '@kalimahapps/vue-icons'
 
 useHead({
     title: "Стоматология Dental Implantology - Ваш путь к здоровой улыбке",
@@ -202,16 +275,146 @@ definePageMeta({
 })
 
 const { pushAlert } = useAlert()
+const { locale, t } = useI18n()
 const { getPublishedDoctors } = useUsers()
-const { createRecord } = useInitialRecords()
 
-const doctors = ref<any[]>([])
-const record = reactive<Partial<InitialRecord>>({
+type RecordFormState = Partial<InitialRecord>
+type ContactDetails = {
+    service: string
+    comment: string
+}
+
+const createRecordState = (): RecordFormState => ({
     notes: "",
     phone: "",
     lastName: "",
     firstName: "",
 })
+
+const createContactDetailsState = (): ContactDetails => ({
+    service: "",
+    comment: "",
+})
+
+const doctors = ref<any[]>([])
+const isSubmitting = ref(false)
+const quickRecord = reactive<RecordFormState>(createRecordState())
+const quickDetails = reactive<ContactDetails>(createContactDetailsState())
+const contactRecord = reactive<RecordFormState>(createRecordState())
+const contactDetails = reactive<ContactDetails>(createContactDetailsState())
+
+const amoCrmConfig = {
+    action: 'https://forms.amocrm.ru/queue/add',
+    formId: '1708402',
+    hash: 'f8ed49cca7d075bac68488605ce95abb',
+    fields: {
+        name: 'fields[name_1]',
+        phone: 'fields[780425_1][1201281]',
+        birthDate: 'fields[780475_2]',
+        service: 'fields[780477_2]',
+        note: 'fields[note_2]',
+    },
+}
+
+const serviceOptions = computed(() => SERVICES.map((service) => {
+    const localizedTitle = service.title[locale.value as keyof typeof service.title] || service.title.uz
+    const amoMap: Record<string, string> = {
+        'Tish oldirish': '1201315',
+        'Pulpa bilan davolash': '1201317',
+        'Kariyesni davolash': '1201319',
+        'Tish implantatsiyasi': '1201321',
+        'Protezlash': '1201323',
+        'Braket tizimi': '1201325',
+        'Ultratovush yordamida tishlarni tozalash': '1201327',
+    }
+
+    return {
+        name: localizedTitle,
+        value: amoMap[service.title.uz] || '',
+    }
+}).filter((service) => !!service.value))
+
+const getDefaultService = () => {
+    const consultationKeywords = ['konsultatsiya', 'консультац', 'consultation']
+    const found = serviceOptions.value.find(s =>
+        consultationKeywords.some(kw => s.name.toLowerCase().includes(kw))
+    )
+    return found?.value || serviceOptions.value[0]?.value || ''
+}
+
+const resetRecord = (form: RecordFormState) => {
+    Object.assign(form, createRecordState())
+}
+
+const resetContactDetails = () => {
+    Object.assign(contactDetails, { ...createContactDetailsState(), service: getDefaultService() })
+}
+
+const resetQuickDetails = () => {
+    Object.assign(quickDetails, { ...createContactDetailsState(), service: getDefaultService() })
+}
+
+const buildNotes = (details?: Partial<ContactDetails>) => {
+    const parts = [
+        details?.comment?.trim() ? `${t('form.note-comment')}: ${details.comment.trim()}` : '',
+    ].filter(Boolean)
+
+    return parts.join('\n')
+}
+
+const ensureAmoCrmTarget = () => {
+    const existing = document.getElementById('amo-crm-submit-frame') as HTMLIFrameElement | null
+    if (existing) return existing
+
+    const iframe = document.createElement('iframe')
+    iframe.id = 'amo-crm-submit-frame'
+    iframe.name = 'amo-crm-submit-frame'
+    iframe.style.display = 'none'
+    document.body.appendChild(iframe)
+
+    return iframe
+}
+
+const appendHiddenField = (form: HTMLFormElement, name: string, value: string) => {
+    const input = document.createElement('input')
+    input.type = 'hidden'
+    input.name = name
+    input.value = value
+    form.appendChild(input)
+}
+
+const submitToAmoCrm = (payload: { name: string, phone: string, service?: string, note?: string }) => {
+    if (!amoCrmConfig.hash || !amoCrmConfig.fields.phone) {
+        pushAlert('Не удалось инициализировать amoCRM форму', 'WARNING')
+        return false
+    }
+
+    ensureAmoCrmTarget()
+
+    const nativeForm = document.createElement('form')
+    nativeForm.method = 'POST'
+    nativeForm.action = amoCrmConfig.action
+    nativeForm.target = 'amo-crm-submit-frame'
+    nativeForm.style.display = 'none'
+
+    appendHiddenField(nativeForm, amoCrmConfig.fields.name, payload.name)
+    appendHiddenField(nativeForm, amoCrmConfig.fields.phone, payload.phone)
+    if (amoCrmConfig.fields.service && payload.service) {
+        appendHiddenField(nativeForm, amoCrmConfig.fields.service, payload.service)
+    }
+    if (amoCrmConfig.fields.note && payload.note) {
+        appendHiddenField(nativeForm, amoCrmConfig.fields.note, payload.note)
+    }
+    appendHiddenField(nativeForm, 'form_id', amoCrmConfig.formId)
+    appendHiddenField(nativeForm, 'hash', amoCrmConfig.hash)
+    appendHiddenField(nativeForm, 'user_origin', window.location.href)
+
+    document.body.appendChild(nativeForm)
+    nativeForm.submit()
+    nativeForm.remove()
+
+    return true
+}
 
 const handleGetDoctors = async () => {
     try {
@@ -222,25 +425,43 @@ const handleGetDoctors = async () => {
     }
 }
 
-const handleRecord = async () => {
-    try {
-        const name = record.firstName?.split(' ')
+const handleRecord = async (form: RecordFormState = quickRecord, details?: Partial<ContactDetails>) => {
+    isSubmitting.value = true
+    let isSubmitted = false
 
-        await createRecord({...record, firstName: name![0], lastName: name![0] || 'Patient' })
+    try {
+        const fullName = form.firstName?.trim() || ''
+        const [firstName = '', ...lastNameParts] = fullName.split(/\s+/).filter(Boolean)
+        const preparedNotes = [form.notes?.trim(), buildNotes(details)].filter(Boolean).join('\n')
+
+        isSubmitted = submitToAmoCrm({
+            name: [firstName, ...lastNameParts].filter(Boolean).join(' '),
+            phone: form.phone?.trim() || '',
+            service: details?.service || undefined,
+            note: preparedNotes || undefined,
+        })
+        if (!isSubmitted) return
         pushAlert('Успешно отправлено', 'SUCCESS')
     } catch (error) {
         pushAlert('Ошибка при отправке!', 'WARNING')
     } finally {
-        Object.assign(record, {
-            notes: "",
-            phone: "",
-            lastName: "",
-            firstName: "",
-        })
+        if (isSubmitted) {
+            resetRecord(form)
+            if (form === contactRecord) {
+                resetContactDetails()
+            }
+            if (form === quickRecord) {
+                resetQuickDetails()
+            }
+        }
+        isSubmitting.value = false
     }
 }
 
 onMounted(() => {
     handleGetDoctors()
+    const def = getDefaultService()
+    quickDetails.service = def
+    contactDetails.service = def
 })
 </script>

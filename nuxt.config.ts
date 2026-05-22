@@ -20,6 +20,9 @@ export default defineNuxtConfig({
   },
 
   i18n: {
+    lazy: true,
+    langDir: './locales',
+    defaultLocale: 'ru',
     locales: [
       {
         code: 'uz',
@@ -34,10 +37,8 @@ export default defineNuxtConfig({
         file: 'en.json',
       },
     ],
-    defaultLocale: 'ru',
     detectBrowserLanguage: false,
-    skipSettingLocaleOnNavigate: true,
-    langDir: './locales',
+    skipSettingLocaleOnNavigate: false,
   },
 
   routeRules: {

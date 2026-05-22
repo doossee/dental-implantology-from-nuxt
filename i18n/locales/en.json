@@ -134,7 +134,25 @@
         "create-review": "Create Review",
         "review-form-title": "Form for reviews",
         "message-of-review": "Message of review",
-        "send": "Send"
+        "send": "Send",
+
+        "contact-kicker": "Booking form",
+        "contact-side-title": "Leave your details to book an appointment",
+        "contact-side-description": "Our administrator will contact you soon and help choose a convenient time and service.",
+        "contact-title": "Book an appointment",
+        "contact-description": "Fill out the form and we will contact you.",
+        "full-name": "Full name",
+        "full-name-placeholder": "Enter your full name",
+        "phone-placeholder": "+998 XX XXX XX XX",
+        "service": "Service",
+        "service-placeholder": "Select a service",
+        "comment": "Additional info",
+        "comment-placeholder": "Leave a comment or complaint",
+        "submit": "Submit",
+        "submitting": "Submitting...",
+        "note-comment": "Comment",
+        "contact-phone": "+998 91 523 33 44",
+        "contact-hours": "Mon – Sat: 09:00 – 21:00"
     },
     "404": {
         "title": "Page Not Found",

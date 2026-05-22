@@ -133,7 +133,25 @@
         "create-review": "Создайте отзыв",
         "review-form-title": "Форма для отзывов",
         "message-of-review": "Сообщение отзыва",
-        "send": "Отправить"
+        "send": "Отправить",
+
+        "contact-kicker": "Форма записи",
+        "contact-side-title": "Оставьте данные для записи на прием",
+        "contact-side-description": "Наш администратор скоро свяжется с вами и поможет подобрать удобное время и нужную услугу.",
+        "contact-title": "Запись на прием",
+        "contact-description": "Заполните форму, и мы свяжемся с вами.",
+        "full-name": "Ф.И.О",
+        "full-name-placeholder": "Введите имя и фамилию",
+        "phone-placeholder": "+998 XX XXX XX XX",
+        "service": "Услуга",
+        "service-placeholder": "Выберите услугу",
+        "comment": "Дополнительно",
+        "comment-placeholder": "Напишите комментарий или жалобу",
+        "submit": "Отправить",
+        "submitting": "Отправка...",
+        "note-comment": "Комментарий",
+        "contact-phone": "+998 91 523 33 44",
+        "contact-hours": "Пн – Сб: 09:00 – 21:00"
     },
     "404": {
         "title": "Страница не найдена",
