@@ -45,6 +45,7 @@
                             v-model="quickDetails.service"
                             :label="$t('form.service')"
                             :items="serviceOptions"
+                            :nullvalue="''"
                             :placeholder="$t('form.service-placeholder')" />
                         <div class="pt-0 md:pt-0 xl:pt-0">
                             <span class="hidden md:block xl:hidden opacity-0 mb-2">*</span>
@@ -241,6 +242,7 @@
                                 v-model="contactDetails.service"
                                 :label="$t('form.service')"
                                 :items="serviceOptions"
+                                :nullvalue="''"
                                 :placeholder="$t('form.service-placeholder')" />
                             <app-textarea
                                 v-model="contactDetails.comment"
@@ -337,24 +339,17 @@ const serviceOptions = computed(() => SERVICES.map((service) => {
     }
 }).filter((service) => !!service.value))
 
-const getDefaultService = () => {
-    const consultationKeywords = ['konsultatsiya', 'консультац', 'consultation']
-    const found = serviceOptions.value.find(s =>
-        consultationKeywords.some(kw => s.name.toLowerCase().includes(kw))
-    )
-    return found?.value || serviceOptions.value[0]?.value || ''
-}
 
 const resetRecord = (form: RecordFormState) => {
     Object.assign(form, createRecordState())
 }
 
 const resetContactDetails = () => {
-    Object.assign(contactDetails, { ...createContactDetailsState(), service: getDefaultService() })
+    Object.assign(contactDetails, createContactDetailsState())
 }
 
 const resetQuickDetails = () => {
-    Object.assign(quickDetails, { ...createContactDetailsState(), service: getDefaultService() })
+    Object.assign(quickDetails, createContactDetailsState())
 }
 
 const buildNotes = (details?: Partial<ContactDetails>) => {
@@ -463,8 +458,5 @@ const handleRecord = async (form: RecordFormState = quickRecord, details?: Parti
 
 onMounted(() => {
     handleGetDoctors()
-    const def = getDefaultService()
-    quickDetails.service = def
-    contactDetails.service = def
 })
 </script>
