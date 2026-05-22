@@ -1,0 +1,16 @@
+# START nuxt-robots (indexable)
+User-agent: *
+Allow: /
+Allow: /uz/
+Allow: /en/
+
+Allow: /services
+Allow: /uz/services
+Allow: /en/services
+
+Disallow: /admin/*
+Disallow: /uz/admin/*
+Disallow: /en/admin/*
+
+Sitemap: https://dr-ikramov.uz/sitemap_index.xml
+# END nuxt-robots

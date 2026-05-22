@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+.manrope-thin {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-extra-light {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-light {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-regular {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-medium {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-semi-bold {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-bold {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-extra-bold {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.manrope-black {
+  font-family: "Manrope", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+span[draw-line] {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  transform: translate(-10px, -20px);
+  background: url("/dl.svg");
+  background-size: cover;
+}
+
+.red-svg {
+  filter: brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(10000%)
+    hue-rotate(0deg) brightness(96%);
+}
+
+.yellow-svg {
+  filter: brightness(0) saturate(100%) invert(90%) sepia(100%) saturate(1000%)
+    hue-rotate(-30deg) brightness(100%);
+}
+
+.yellow-svg-hover:hover {
+  filter: brightness(0) saturate(100%) invert(90%) sepia(100%) saturate(1000%)
+    hue-rotate(-60deg) brightness(100%);
+}
+
+@media screen and (max-width: 800px) {
+  span[draw-line] {
+    width: 20px;
+    height: 20px;
+    transform: translate(-5px, -10px);
+  }
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+    html {
+        font-family: "Manrope", system-ui, sans-serif;
+    }
+}
+
+/* @utility container {
+  max-width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+  
+} */
+/* @screen sm {
+  max-width: 640px;
+}
+@screen md {
+  max-width: 768px;
+}
+@screen lg {
+  max-width: 1024px;
+}
+@screen xl {
+  max-width: 1280px;
+}
+@screen 2xl {
+  max-width: 1400px;
+} */
+
+/* @theme {
+    --color-primary-100: rgb(219 234 254 / 1);
+    --color-primary-200: rgb(191 219 254 / 1);
+    --color-primary-300: rgb(147 197 253 / 1);
+    --color-primary-400: rgb(96 165 250 / 1);
+    --color-primary-500: rgb(59 130 246 / 1);
+    --color-primary-600: rgb(37 99 235 / 1);
+    --color-primary-700: rgb(29 78 216 / 1);
+    --color-primary-800: rgb(30 64 175 / 1);
+    --color-primary-900: rgb(30 58 138 / 1);
+
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+} */

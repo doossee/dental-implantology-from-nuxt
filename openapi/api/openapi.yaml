@@ -1,0 +1,3634 @@
+openapi: 3.0.0
+paths:
+  /auth/login:
+    post:
+      operationId: AuthController_login
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthEntity'
+      tags:
+        - auth
+  /auth/refresh:
+    post:
+      operationId: AuthController_refresh
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshTokenDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthEntity'
+      tags:
+        - auth
+  /users/me:
+    get:
+      operationId: UsersController_findMe
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - users
+    patch:
+      operationId: UsersController_updateMe
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDoctorDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - users
+  /users/me/change-password:
+    patch:
+      operationId: UsersController_updatePassword
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePasswordDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - users
+  /users/me/change-avatar:
+    patch:
+      operationId: UsersController_updateAvatar
+      parameters: []
+      responses:
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - users
+  /users:
+    post:
+      operationId: UsersController_createDoctor
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDoctorDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - users
+    get:
+      operationId: UsersController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: gender
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: birthDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: role
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: specialty
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: isPublished
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: createdDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: byGender
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byExperience
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byAge
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byCreatedDate
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - users
+  /users/published-doctors:
+    get:
+      operationId: UsersController_findPublishedDoctors
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+      tags:
+        - users
+  /users/{id}:
+    get:
+      operationId: UsersController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - users
+    patch:
+      operationId: UsersController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - users
+    delete:
+      operationId: UsersController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - users
+  /procedures:
+    post:
+      operationId: ProceduresController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProcedureDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcedureEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - procedures
+      security:
+        - bearer: []
+    get:
+      operationId: ProceduresController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: isPublic
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byPrice
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProcedureEntity'
+      tags:
+        - procedures
+      security:
+        - bearer: []
+  /procedures/{id}:
+    get:
+      operationId: ProceduresController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcedureEntity'
+      tags:
+        - procedures
+      security:
+        - bearer: []
+    patch:
+      operationId: ProceduresController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProcedureDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcedureEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - procedures
+      security:
+        - bearer: []
+    delete:
+      operationId: ProceduresController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcedureEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - procedures
+      security:
+        - bearer: []
+  /services:
+    post:
+      operationId: ServicesController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - services
+      security:
+        - bearer: []
+    get:
+      operationId: ServicesController_findAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - services
+      security:
+        - bearer: []
+  /services/{id}:
+    get:
+      operationId: ServicesController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - services
+      security:
+        - bearer: []
+    patch:
+      operationId: ServicesController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - services
+      security:
+        - bearer: []
+    delete:
+      operationId: ServicesController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - services
+      security:
+        - bearer: []
+  /patients:
+    post:
+      operationId: PatientsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePatientDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - patients
+      security:
+        - bearer: []
+    get:
+      operationId: PatientsController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: gender
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: birthDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: createdUserId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: createdDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: byGender
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byAge
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byCreatedDate
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPatientEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - patients
+      security:
+        - bearer: []
+  /patients/{id}:
+    get:
+      operationId: PatientsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+        - name: expand
+          required: true
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - patients
+      security:
+        - bearer: []
+    patch:
+      operationId: PatientsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePatientDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - patients
+      security:
+        - bearer: []
+    delete:
+      operationId: PatientsController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - patients
+      security:
+        - bearer: []
+  /patients/{id}/change-avatar:
+    patch:
+      operationId: PatientsController_updateAvatar
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - patients
+      security:
+        - bearer: []
+  /appointments/mine:
+    post:
+      operationId: AppointmentsController_createMine
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMyAppointmentDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Only users with Doctor permissions can perform this
+            action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+    get:
+      operationId: AppointmentsController_findMine
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: doctorId
+          required: true
+          in: query
+          schema:
+            type: number
+        - name: patientId
+          required: true
+          in: query
+          schema:
+            type: number
+        - name: startDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: endDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: byDoctorId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byPatientId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byStartDate
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byEndDate
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byCreatedDate
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Only users with Doctor permissions can perform this
+            action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+  /appointments/mine/{id}:
+    get:
+      operationId: AppointmentsController_findMineOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Only users with Doctor permissions can perform this
+            action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+    patch:
+      operationId: AppointmentsController_updateMine
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMyAppointmentDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Only users with Doctor permissions can perform this
+            action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+    delete:
+      operationId: AppointmentsController_removeMine
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Only users with Doctor permissions can perform this
+            action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+  /appointments:
+    post:
+      operationId: AppointmentsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAppointmentDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+    get:
+      operationId: AppointmentsController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: doctorId
+          required: true
+          in: query
+          schema:
+            type: number
+        - name: patientId
+          required: true
+          in: query
+          schema:
+            type: number
+        - name: startDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: endDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: byDoctorId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byPatientId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byStartDate
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byEndDate
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byCreatedDate
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+  /appointments/{id}:
+    get:
+      operationId: AppointmentsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+    patch:
+      operationId: AppointmentsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAppointmentDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+    delete:
+      operationId: AppointmentsController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - appointments
+      security:
+        - bearer: []
+  /teeth:
+    get:
+      operationId: TeethController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: num
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: patientId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byNum
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToothEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - teeth
+  /teeth/{id}:
+    get:
+      operationId: TeethController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToothEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - teeth
+    patch:
+      operationId: TeethController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateToothDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToothEntity'
+      tags:
+        - teeth
+  /examinations:
+    post:
+      operationId: ExaminationsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateExaminationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExaminationEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - examinations
+      security:
+        - bearer: []
+    get:
+      operationId: ExaminationsController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: toothId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: patientId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: createdUserId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: status
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: createdDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: byIsPaid
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byCreatedDate
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedExaminationEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - examinations
+      security:
+        - bearer: []
+  /examinations/{id}:
+    get:
+      operationId: ExaminationsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExaminationEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - examinations
+      security:
+        - bearer: []
+    patch:
+      operationId: ExaminationsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateExaminationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExaminationEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - examinations
+      security:
+        - bearer: []
+    delete:
+      operationId: ExaminationsController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExaminationEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - examinations
+      security:
+        - bearer: []
+  /treatments/{id}:
+    get:
+      operationId: TreatmentsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreatmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Only users with Doctor permissions can perform this
+            action.
+      tags:
+        - treatments
+    patch:
+      operationId: TreatmentsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTreatmentDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreatmentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Only users with Doctor permissions can perform this
+            action.
+      tags:
+        - treatments
+  /initial-records:
+    post:
+      operationId: InitialRecordsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInitialRecordDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialRecordEntity'
+      tags:
+        - initial-records
+    get:
+      operationId: InitialRecordsController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: byFirstName
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byLastName
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInitialRecordEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - initial-records
+  /initial-records/{id}:
+    get:
+      operationId: InitialRecordsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialRecordEntity'
+      tags:
+        - initial-records
+    patch:
+      operationId: InitialRecordsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInitialRecordDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialRecordEntity'
+      tags:
+        - initial-records
+    delete:
+      operationId: InitialRecordsController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialRecordEntity'
+      tags:
+        - initial-records
+  /payments:
+    post:
+      operationId: PaymentsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - payments
+      security:
+        - bearer: []
+    get:
+      operationId: PaymentsController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: type
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: doctorId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: patientId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: startDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: endDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: createdDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: byPatientId
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byDoctorId
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byCreatedDate
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPaymentEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - payments
+      security:
+        - bearer: []
+  /payments/{id}:
+    get:
+      operationId: PaymentsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - payments
+      security:
+        - bearer: []
+  /x-ray-data:
+    post:
+      operationId: XRayDataController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateXRayDataDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XRayDataEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - x-ray-data
+      security:
+        - bearer: []
+    get:
+      operationId: XRayDataController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: toothId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: patientId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byToothId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaginatedXRayDataEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - x-ray-data
+      security:
+        - bearer: []
+  /x-ray-data/{id}:
+    get:
+      operationId: XRayDataController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XRayDataEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - x-ray-data
+      security:
+        - bearer: []
+    patch:
+      operationId: XRayDataController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateXRayDataDto'
+      responses:
+        '200':
+          description: ''
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - x-ray-data
+      security:
+        - bearer: []
+    delete:
+      operationId: XRayDataController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XRayDataEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - x-ray-data
+      security:
+        - bearer: []
+  /consumptions:
+    post:
+      operationId: ConsumptionsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConsumptionDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumptionEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - consumptions
+      security:
+        - bearer: []
+    get:
+      operationId: ConsumptionsController_findAll
+      parameters:
+        - name: search
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: perPage
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: byId
+          required: false
+          in: query
+          schema:
+            enum:
+              - asc
+              - desc
+            type: string
+        - name: isSalary
+          required: false
+          in: query
+          schema:
+            type: boolean
+        - name: doctorId
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: startDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: endDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: createdDate
+          required: false
+          in: query
+          schema:
+            format: date-time
+            type: string
+        - name: byDoctorId
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: byCreatedDate
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaginatedConsumptionEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - consumptions
+      security:
+        - bearer: []
+  /consumptions/{id}:
+    get:
+      operationId: ConsumptionsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumptionEntity'
+        '401':
+          description: 'Access denied: User is not authenticated. Please log in to continue.'
+      tags:
+        - consumptions
+      security:
+        - bearer: []
+    patch:
+      operationId: ConsumptionsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConsumptionDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumptionEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - consumptions
+      security:
+        - bearer: []
+    delete:
+      operationId: ConsumptionsController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumptionEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - consumptions
+      security:
+        - bearer: []
+  /kpi-percents:
+    post:
+      operationId: KpiPercentsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKpiPercentDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KpiPercentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - kpi-percents
+      security:
+        - bearer: []
+    get:
+      operationId: KpiPercentsController_findAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedKpiPercentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - kpi-percents
+      security:
+        - bearer: []
+  /kpi-percents/{id}:
+    get:
+      operationId: KpiPercentsController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KpiPercentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - kpi-percents
+      security:
+        - bearer: []
+    patch:
+      operationId: KpiPercentsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateKpiPercentDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KpiPercentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - kpi-percents
+      security:
+        - bearer: []
+    delete:
+      operationId: KpiPercentsController_delete
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KpiPercentEntity'
+        '401':
+          description: >-
+            Access denied: User is not authenticated. Please log in to access
+            this resource.
+        '403':
+          description: >-
+            Access denied: Insufficient permissions. Admin privileges are
+            required to perform this action.
+      tags:
+        - kpi-percents
+      security:
+        - bearer: []
+info:
+  title: dr-ikramov
+  description: The dr-ikramov API description
+  version: '0.1'
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+  schemas:
+    AuthDto:
+      type: object
+      properties:
+        phone:
+          type: string
+          example: '+998901234567'
+        password:
+          type: string
+          example: 123qazwsx
+      required:
+        - phone
+        - password
+    AuthEntity:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          readOnly: true
+        refreshToken:
+          type: string
+          readOnly: true
+        userId:
+          type: number
+          readOnly: true
+        userRole:
+          type: string
+          readOnly: true
+        isSuperUser:
+          type: boolean
+          readOnly: true
+      required:
+        - accessToken
+        - refreshToken
+        - userId
+        - userRole
+        - isSuperUser
+    RefreshTokenDto:
+      type: object
+      properties:
+        refreshToken:
+          type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTczMzIzMTAyNCwiZXhwIjoxNzMzODM1ODI0fQ.DNcX3QHIowkFxfw88Nh6pMXJNSqNPlZBYsf6uSW96dk
+      required:
+        - refreshToken
+    UserEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        phone:
+          type: string
+        refreshToken:
+          type: string
+          nullable: false
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        birthDate:
+          format: date-time
+          type: string
+        balance:
+          type: number
+          default: 0
+        specialties:
+          default: []
+          type: array
+          items:
+            type: string
+        experience:
+          type: number
+          nullable: true
+        content:
+          type: string
+          nullable: true
+        rating:
+          type: number
+        isPublished:
+          type: boolean
+          default: true
+        isSuperUser:
+          type: boolean
+          default: false
+        role:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+      required:
+        - id
+        - phone
+        - firstName
+        - lastName
+        - birthDate
+        - balance
+        - specialties
+        - rating
+        - isPublished
+        - isSuperUser
+        - role
+        - createdAt
+        - updatedAt
+    UpdateDoctorDto:
+      type: object
+      properties:
+        phone:
+          type: string
+          example: '+998901234567'
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        middleName:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        birthDate:
+          format: date-time
+          type: string
+          nullable: true
+        specialties:
+          default: []
+          type: array
+          items:
+            type: string
+        experience:
+          type: number
+          nullable: true
+        content:
+          type: string
+          nullable: true
+        isPublished:
+          type: boolean
+          default: true
+    UpdatePasswordDto:
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+        confirmPassword:
+          type: string
+      required:
+        - oldPassword
+        - newPassword
+        - confirmPassword
+    CreateDoctorDto:
+      type: object
+      properties:
+        phone:
+          type: string
+          example: '+998901234567'
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        middleName:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        birthDate:
+          format: date-time
+          type: string
+          nullable: true
+        specialties:
+          default: []
+          type: array
+          items:
+            type: string
+        experience:
+          type: number
+          nullable: true
+        content:
+          type: string
+          nullable: true
+        isPublished:
+          type: boolean
+          default: true
+      required:
+        - phone
+        - firstName
+        - lastName
+    UpdateUserDto:
+      type: object
+      properties:
+        phone:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        birthDate:
+          format: date-time
+          type: string
+        specialties:
+          type: array
+          items:
+            type: string
+        experience:
+          type: number
+        content:
+          type: string
+        rating:
+          type: number
+        isPublished:
+          type: boolean
+        role:
+          type: string
+    CreateProcedureDto:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        title_en:
+          type: string
+        title_ru:
+          type: string
+          nullable: true
+        title_uz:
+          type: string
+          nullable: true
+        description_en:
+          type: string
+          nullable: true
+        description_ru:
+          type: string
+          nullable: true
+        description_uz:
+          type: string
+          nullable: true
+        serviceId:
+          type: number
+        price:
+          type: number
+          default: 0
+        isPublic:
+          type: boolean
+          default: false
+      required:
+        - title_en
+        - serviceId
+    ProcedureEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        code:
+          type: string
+          nullable: true
+        title_en:
+          type: string
+        title_ru:
+          type: string
+          nullable: true
+        title_uz:
+          type: string
+          nullable: false
+        description_en:
+          type: string
+          nullable: true
+        description_ru:
+          type: string
+          nullable: true
+        description_uz:
+          type: string
+          nullable: true
+        serviceId:
+          type: number
+        price:
+          type: number
+          default: 0
+        isPublic:
+          type: boolean
+          default: false
+      required:
+        - id
+        - title_en
+        - serviceId
+    MetaDateEntity:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 50
+        lastPage:
+          type: number
+          example: 5
+        currentPage:
+          type: number
+          example: 1
+        perPage:
+          type: number
+          example: 10
+        prev:
+          type: number
+          example: null
+        next:
+          type: number
+          example: 2
+      required:
+        - total
+        - lastPage
+        - currentPage
+        - perPage
+        - prev
+        - next
+    PaginatedProcedureEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDateEntity'
+      required:
+        - data
+        - meta
+    UpdateProcedureDto:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        title_en:
+          type: string
+        title_ru:
+          type: string
+          nullable: true
+        title_uz:
+          type: string
+          nullable: true
+        description_en:
+          type: string
+          nullable: true
+        description_ru:
+          type: string
+          nullable: true
+        description_uz:
+          type: string
+          nullable: true
+        serviceId:
+          type: number
+        price:
+          type: number
+          default: 0
+        isPublic:
+          type: boolean
+          default: false
+    CreateServiceDto:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+      required:
+        - title
+    ServiceEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        procedures:
+          description: List of related procedures
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureEntity'
+      required:
+        - id
+        - title
+        - procedures
+    UpdateServiceDto:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+    CreatePatientDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+        additionalPhone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        birthDate:
+          format: date-time
+          type: string
+        gender:
+          type: string
+          default: MALE
+        address:
+          type: string
+          nullable: true
+        additionalInformation:
+          type: object
+          nullable: true
+      required:
+        - firstName
+        - lastName
+        - phone
+        - birthDate
+    PatientEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+        additionalPhone:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        birthDate:
+          format: date-time
+          type: string
+        gender:
+          type: string
+          nullable: true
+        age:
+          type: number
+          readOnly: true
+        address:
+          type: string
+          nullable: true
+        balance:
+          type: number
+        additionalInformation:
+          type: object
+          nullable: true
+        userId:
+          type: number
+          readOnly: true
+        createdUser:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/UserEntity'
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+      required:
+        - id
+        - firstName
+        - lastName
+        - phone
+        - birthDate
+        - age
+        - balance
+        - userId
+        - createdUser
+        - createdAt
+        - updatedAt
+    PaginatedPatientEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatientEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDateEntity'
+      required:
+        - data
+        - meta
+    UpdatePatientDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+        additionalPhone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        birthDate:
+          format: date-time
+          type: string
+        gender:
+          type: string
+          default: MALE
+        address:
+          type: string
+          nullable: true
+        additionalInformation:
+          type: object
+          nullable: true
+    CreateMyAppointmentDto:
+      type: object
+      properties:
+        patientId:
+          type: number
+        serviceId:
+          type: number
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      required:
+        - patientId
+        - serviceId
+        - startDate
+    AppointmentEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        patientId:
+          type: number
+          example: 1
+        patient:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/PatientEntity'
+        doctorId:
+          type: number
+          example: 2
+        doctor:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/UserEntity'
+        serviceId:
+          type: number
+          example: 3
+        startDate:
+          format: date-time
+          type: string
+          example: '2024-01-01T08:00:00'
+        endDate:
+          format: date-time
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+      required:
+        - id
+        - patientId
+        - patient
+        - doctorId
+        - doctor
+        - serviceId
+        - startDate
+        - createdAt
+        - updatedAt
+    UpdateMyAppointmentDto:
+      type: object
+      properties:
+        patientId:
+          type: number
+        serviceId:
+          type: number
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+    CreateAppointmentDto:
+      type: object
+      properties:
+        patientId:
+          type: number
+        doctorId:
+          type: number
+        serviceId:
+          type: number
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        description:
+          type: string
+      required:
+        - patientId
+        - doctorId
+        - serviceId
+        - startDate
+    UpdateAppointmentDto:
+      type: object
+      properties:
+        patientId:
+          type: number
+        doctorId:
+          type: number
+        serviceId:
+          type: number
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        description:
+          type: string
+    ToothEntity:
+      type: object
+      properties:
+        id:
+          type: number
+        num:
+          type: number
+        condition:
+          type: array
+          items:
+            type: string
+        patientId:
+          type: number
+        patient:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/PatientEntity'
+        images:
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - num
+        - patientId
+        - patient
+        - images
+    UpdateToothDto:
+      type: object
+      properties:
+        num:
+          type: number
+        patientId:
+          type: number
+        images:
+          type: array
+          items:
+            type: string
+        condition:
+          type: array
+          items:
+            type: string
+        removeImages:
+          description: Paths of images to be removed
+          type: array
+          items:
+            type: string
+    CreateExaminationDto:
+      type: object
+      properties:
+        toothId:
+          type: number
+        toothCondition:
+          type: array
+          items:
+            type: string
+        treatments:
+          example: '[{ procedureId: number, isCompleted: boolean, price: number }]'
+          type: array
+          items:
+            type: string
+      required:
+        - toothId
+    TreatmentEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        procedureId:
+          type: number
+          example: 9
+        procedure:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/ProcedureEntity'
+        isCompleted:
+          type: boolean
+          default: false
+        completedAt:
+          format: date-time
+          type: string
+          nullable: true
+        examinationId:
+          type: number
+          example: 10
+        price:
+          type: number
+          example: 10000
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+      required:
+        - id
+        - procedureId
+        - procedure
+        - isCompleted
+        - examinationId
+        - price
+        - createdAt
+        - updatedAt
+    ExaminationEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        toothId:
+          type: number
+          example: 4
+        tooth:
+          $ref: '#/components/schemas/ToothEntity'
+        userId:
+          type: number
+          example: 7
+        createdUser:
+          $ref: '#/components/schemas/UserEntity'
+        toothCondition:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          default: PENDING
+        sum:
+          type: number
+          default: 0
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+        treatments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TreatmentEntity'
+      required:
+        - id
+        - toothId
+        - tooth
+        - userId
+        - createdUser
+        - createdAt
+        - updatedAt
+    PaginatedExaminationEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExaminationEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDateEntity'
+      required:
+        - data
+        - meta
+    UpdateExaminationDto:
+      type: object
+      properties:
+        toothId:
+          type: number
+        toothCondition:
+          type: array
+          items:
+            type: string
+        treatments:
+          example: '[{ procedureId: number, isCompleted: boolean, price: number }]'
+          type: array
+          items:
+            type: string
+    UpdateTreatmentDto:
+      type: object
+      properties:
+        order:
+          type: number
+        isCompleted:
+          type: boolean
+          default: true
+        completedAt:
+          format: date-time
+          type: string
+        price:
+          type: number
+    CreateInitialRecordDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        notes:
+          type: string
+          nullable: true
+      required:
+        - firstName
+        - lastName
+        - phone
+    InitialRecordEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        notes:
+          type: string
+          nullable: true
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+      required:
+        - id
+        - firstName
+        - lastName
+        - phone
+        - createdAt
+        - updatedAt
+    PaginatedInitialRecordEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InitialRecordEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDateEntity'
+      required:
+        - data
+        - meta
+    UpdateInitialRecordDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        notes:
+          type: string
+          nullable: true
+    CreatePaymentDto:
+      type: object
+      properties:
+        examinationId:
+          type: number
+        amount:
+          type: number
+        type:
+          type: string
+      required:
+        - examinationId
+        - amount
+        - type
+    PaymentEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        examinationId:
+          type: number
+          example: 6
+        examination:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/ExaminationEntity'
+        type:
+          type: string
+        amount:
+          type: number
+          example: 100000
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+      required:
+        - id
+        - examinationId
+        - examination
+        - type
+        - amount
+        - createdAt
+        - updatedAt
+    MetaDataEntityWithTotal:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 0
+        lastPage:
+          type: number
+          example: 5
+        currentPage:
+          type: number
+          example: 1
+        perPage:
+          type: number
+          example: 10
+        prev:
+          type: number
+          example: null
+        next:
+          type: number
+          example: 2
+      required:
+        - total
+        - lastPage
+        - currentPage
+        - perPage
+        - prev
+        - next
+    PaginatedPaymentEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDataEntityWithTotal'
+      required:
+        - data
+        - meta
+    CreateXRayDataDto:
+      type: object
+      properties:
+        examinationDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+            - INTRAORAL
+            - ORTHOPANTOMOGRAM
+            - CT
+            - UPPER_LOWER_JAW_CT
+            - UPPER_LOWER_JAW_AND_TMJ_JOINTS_CT
+            - UPPER_JAW_AND_MAXILLARY_SINUSES_CT
+            - LATERAL_PROJECTION_TRG
+            - DIRECT_PROJECTION_TRG
+            - SMV_PROJECTION_TRG
+            - FOUR_SECTION_TMJ
+            - SIX_SECTION_TMJ
+            - OTHER
+        toothId:
+          type: number
+        amount:
+          type: number
+        dose:
+          type: number
+        conclusion:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+      required:
+        - examinationDate
+        - type
+        - toothId
+        - amount
+        - dose
+    XRayDataEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        examinationDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+        toothId:
+          type: number
+        amount:
+          type: number
+        dose:
+          type: number
+        conclusion:
+          type: string
+          nullable: false
+        images:
+          default: []
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - examinationDate
+        - type
+        - toothId
+        - amount
+        - dose
+        - images
+    PaginatedXRayDataEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/XRayDataEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDateEntity'
+      required:
+        - data
+        - meta
+    UpdateXRayDataDto:
+      type: object
+      properties:
+        examinationDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+            - INTRAORAL
+            - ORTHOPANTOMOGRAM
+            - CT
+            - UPPER_LOWER_JAW_CT
+            - UPPER_LOWER_JAW_AND_TMJ_JOINTS_CT
+            - UPPER_JAW_AND_MAXILLARY_SINUSES_CT
+            - LATERAL_PROJECTION_TRG
+            - DIRECT_PROJECTION_TRG
+            - SMV_PROJECTION_TRG
+            - FOUR_SECTION_TMJ
+            - SIX_SECTION_TMJ
+            - OTHER
+        toothId:
+          type: number
+        amount:
+          type: number
+        dose:
+          type: number
+        conclusion:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        removeImages:
+          description: Paths of images to be removed
+          type: array
+          items:
+            type: string
+    CreateConsumptionDto:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        isSalary:
+          type: boolean
+          default: false
+        doctorId:
+          type: number
+          nullable: true
+        amount:
+          type: number
+      required:
+        - title
+        - amount
+    ConsumptionEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        title:
+          type: string
+          example: Salary
+        description:
+          type: string
+          nullable: true
+        isSalary:
+          type: boolean
+          default: false
+        doctorId:
+          type: number
+          nullable: true
+        amount:
+          type: number
+          example: 100
+        createdAt:
+          format: date-time
+          type: string
+          readOnly: true
+        updatedAt:
+          format: date-time
+          type: string
+          readOnly: true
+      required:
+        - id
+        - title
+        - amount
+        - createdAt
+        - updatedAt
+    PaginatedConsumptionEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsumptionEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDataEntityWithTotal'
+      required:
+        - data
+        - meta
+    UpdateConsumptionDto:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        isSalary:
+          type: boolean
+          default: false
+        doctorId:
+          type: number
+          nullable: true
+        amount:
+          type: number
+    CreateKpiPercentDto:
+      type: object
+      properties:
+        percent:
+          type: number
+        userId:
+          type: number
+        procedureId:
+          type: number
+      required:
+        - percent
+        - userId
+        - procedureId
+    KpiPercentEntity:
+      type: object
+      properties:
+        id:
+          type: number
+        percent:
+          type: number
+        userId:
+          type: number
+        procedureId:
+          type: number
+      required:
+        - id
+        - percent
+        - userId
+        - procedureId
+    PaginatedKpiPercentEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KpiPercentEntity'
+        meta:
+          $ref: '#/components/schemas/MetaDateEntity'
+      required:
+        - data
+        - meta
+    UpdateKpiPercentDto:
+      type: object
+      properties:
+        percent:
+          type: number
+        userId:
+          type: number
+        procedureId:
+          type: number

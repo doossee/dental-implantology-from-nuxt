@@ -1,0 +1,144 @@
+{
+    "nav": {
+        "home": "Bosh sahifa",
+        "about": "Biz haqimizda",
+        "doctors": "Shifokorlar",
+        "services": "Xizmatlar",
+        "contacts": "Bog'lanish",
+        "call": "Qo'ng'iroq qilish"
+    },
+    "home": {
+        "header-every-day-work": "{tag} Har {br} kuni 24 soat {tagclose} siz {br} uchun xizmatda",
+
+        "header-subtitle": "Yordamimiz bilan sog'lom tabassum!",
+        "header-title": "Samarqanddagi eng {tag} yaxshi stomatologiya – {tag} Dental Implantalogy {svg} {tag} Center",
+        "header-description": "Samarqanddagi ishonchli stomatologiyangiz - Tish Implantalogiya Markazi Samarqand shahridagi professional stomatologik yordam uchun Dental Implantalogiya Markaziga murojaat qiling. Bizning jamoamiz tish implantlari, tishlarni oqartirish va tishlarni karisini davolash kabi keng turdagi xizmatlarni taklif etadi. Agar siz Samarqandda estetik stomatologiya yoki etishmayotgan tishlar muammosiga yechim izlayotgan bo'lsangiz, bizning klinikamiz sizning eng yaxshi tanlovingizdir.",
+        
+        "home-card-1-title": "Profilaktik tekshiruv",
+        "home-card-1-description": "Muntazam stomatologik tekshiruvlar tish va tish go'shtini sog'lom saqlashga yordam beradi va jiddiy kasalliklar rivojlanishining oldini oladi",
+        
+        "home-card-2-title": "Implantatsiya",
+        "home-card-2-description": "Yo'qotilgan tishlarni almashtirish uchun mustahkam va ishonchli yechim bo'lgan implantlar bilan ishonchingizni tiklang.",
+
+        "home-card-3-title": "Estetik stomatologiya",
+        "home-card-3-description": "Kosmetik stomatologiya xizmatlarimiz, jumladan tishlarni oqartirish, yoritgichlar va tishlarni qayta shakllantirish xizmatlarimiz yordamida tabassumingiz ko'rinishini yaxshilang.",
+        
+        "home-about-us-subtitle": "Biz haqimizda ko'proq ma'lumot",
+        "home-about-us-title": "Bizning stomatologiya klinikamizga xush kelibsiz!",
+        "home-about-us-description": "Sizni salomatligingiz va tabassumingiz go'zalligi uchun bizni tanlaganingizdan xursandmiz. Bizning klinika sohaning yetakchilaridan biri hisoblanadi va biz bemorlarimizga sifatli xizmatlar va shaxsiy e'tibor ko'rsatish bilan faxrlanamiz.",
+
+        "home-about-us-item-1": "Malakali mutaxassislar va uzluksiz takomillashtirish",
+        "home-about-us-item-2": "Stomatologiya sohasida 20 yillik tajriba",
+        "home-about-us-item-3": "Zamonaviy jihozlar, individual yondashuv, moslashuvchan jadval",
+        "home-about-us-item-4": "Ishonch va Mukammallik",
+
+        "home-why-choice-us-subtitle": "Nima uchun bizni tanlashingiz kerak",
+        "home-why-choice-us-title": "Sifat, professionallik va individual yondashuv",
+        "home-why-choice-us-description-1": "Bizning stomatologiya kabinetimiz sizning tabassumingizni sog'lom va go'zal saqlash uchun keng turdagi xizmatlarni taklif etadi. Biz faqat zamonaviy uskunalar va materiallardan foydalanamiz, bu esa protseduralar paytida xavfsizlik va qulaylikni ta'minlaydi.",
+        "home-why-choice-us-description-2": "Bizning malakali mutaxassislar jamoamiz keng tajribaga ega va o'z mahoratlarini doimiy ravishda oshirib boradi. Biz bemorlarimizning ishonchini qadrlaymiz va ularning kutganlaridan oshib ketishga harakat qilamiz. Bizni tanlang va sog'lom va go'zal tabassumingizdan zavqlaning!",
+
+        "home-counst-info-1": "Baxtli mijozlar",
+        "home-counst-info-2": "Tajriba yillari",
+        "home-counst-info-3": "Tajribali shifokorlar",
+        "home-counst-info-4": "Kuniga arizalar",
+
+        "home-services-subtitle": "Bizning xizmatlarimiz",
+        "home-services-title": "Har qanday yosh uchun kompleks stomatologik parvarish",
+        "home-services-description": "Bizning stomatologiya klinikamiz tishlar va milklarni sog'lom va go'zal saqlash uchun keng turdagi xizmatlarni taklif etadi.",
+
+        "home-blog-subtitle": "Bizning blog",
+        "home-blog-title": "Blog",
+        "home-blog-description": "Bizning blogimizga xush kelibsiz! Bu erda biz stomatologiya dunyosidan foydali ma'lumotlar va yangiliklarni bo'lishamiz.",
+
+        "home-jumbotron-subtitle": "Muntazam tekshiruvlar tabassumingizni sog'lom saqlaydi",
+        "home-jumbotron-title": "Nima uchun stomatologga muntazam tashrif buyurish muhim?",
+        "home-jumbotron-description": "Stomatologga muntazam tashriflar og'iz sog'ligini saqlash va jiddiy kasalliklarning oldini olishda muhim rol o'ynaydi. Ushbu blogda biz muntazam tekshiruvlarning ahamiyati, qachon stomatologga borishingiz kerakligi va bu ishlarning foydalari haqida tushuntiramiz. Muammolarni erta aniqlash ularni rivojlanishidan oldini olish va kelajakda vaqt, pul va stressni tejashga yordam berishini bilib olasiz. Maslahatlarimizni o'qing va tabassumingiz sog'ligiga ishonch hosil qiling!",
+
+        
+        "home-faqs-subtitle": "Ko'p so'raladigan savollar",
+        "home-faqs-title": "Bizning klinikamiz haqida ko'proq bilib oling",
+        "home-faqs-description": "Bu yerda siz bizning klinikamiz haqida eng ko'p beriladigan savollarga javoblar topishingiz mumkin. Bizning xizmatlarimiz, shifokorlarimiz va jihozlarimiz haqida ko'proq ma'lumot oling."
+        
+    },
+    "about": {
+        "subtitle": "Biz haqimizda ko'proq bilib oling",
+        "title": "Bizning klinikamiz haqida",
+        "description": "Bizning stomatologiya ofisimizga xush kelibsiz, bu erda sizning tabassumingiz bizning ustuvor vazifamizdir. Biz zamonaviy davolash usullari va eng yuqori darajadagi parvarishni taklif etamiz. Bizning qadriyatlarimiz va missiyamiz haqida ko'proq bilib oling.",
+
+        "subtitle-1": "Biz haqimizda",
+        "title-1": "Ishonch, sifat va professionallik",
+        "description-1": "Bizning stomatologiya klinikamiz 2000 yilda sifatli stomatologik xizmatlar ko'rsatish maqsadida tashkil etilgan. Yillar davomida biz ko'p tajriba to'pladik va sohaning yetakchi klinikalaridan biriga aylandik. Bizning malakali mutaxassislar jamoamiz xizmatlarni eng yuqori darajada taqdim etish uchun o'z mahoratlarini doimiy ravishda oshirib boradi.",
+        "description-2": "Biz bemorlarimizning ishonchini qadrlaymiz va ularning kutganlaridan oshib ketishga harakat qilamiz. Bizning klinikamiz zamonaviy jihozlar va materiallar bilan jihozlangan bo'lib, bemorlarimizning xavfsizligi va qulayligini ta'minlaydi. Biz tishlar va milklarni sog'lom va go'zal saqlash uchun keng turdagi xizmatlarni taklif etamiz. Bizni tanlang va tabassumingizni mutaxassislar qo'liga topshiring!"
+    },
+    "doctors": {
+        "subtitle": "Bizning shifokorlarimiz bilan tanishing",
+        "title": "Bizning mutaxassislar jamoasi",
+        "description": "Bizning shifokorlarimiz o'z ishiga sodiq tajribali va malakali mutaxassislardir. Bizning stomatologlarimizning tarjimai holi va malakasi bilan tanishib chiqing va tanlovingizga ishonch hosil qiling."
+    },
+    "services": {
+        "subtitle": "Keng turdagi davolash usullari",
+        "title": "Bizning xizmatlarimiz",
+        "all-services": "Barcha xizmatlar",
+        "popular-title": "Ommabop xizmatlar",
+        "list-of-services": "Barcha xizmatlarimiz ro'yxati",
+        "description": "Biz profilaktik tekshiruvlardan tortib, murakkab jarrohlik aralashuvlariga qadar keng turdagi stomatologik xizmatlarni taklif etamiz. Sog'lom va go'zal tabassumingizni saqlashda sizga qanday yordam berishimiz mumkinligi haqida ko'proq bilib oling."
+    },
+    "contacts": {
+        "subtitle": "Biz bilan bog'laning",
+        "title": "Bepul maslahat {tag} beramiz!",
+        "description": "Biz davolanish bo'yicha har qanday savolga javob beramiz {tag} va siz uchun mos dasturni tanlaymiz",
+        "form-title": "Biz bilan bog'laning",
+        "form-description": "Biz har doim sizga yordam berishga tayyormiz",
+        "form-description-1": "Bizning mutaxassislarimiz tez orada siz bilan bog'lanadi. Iltimos, kontakt ma'lumotlaringizni taqdim eting va so'rovingizni qisqacha tavsiflang. Biz sizning vaqtingizni qadrlaymiz va barcha so'rovlarga iloji boricha tez javob berishga harakat qilamiz."
+    },
+    "footer": {
+        "description": "Biz sizning tabassumingizni sog'lom saqlash uchun keng turdagi xizmatlarni taklif etamiz. Bizning tajribali mutaxassislarimiz zamonaviy texnologiyalar va har bir bemorga individual yondashuvdan foydalanadilar. Uchrashuv va maslahat uchun biz bilan bog'laning.",
+        "concats-title": "Bizning kontaktlarimiz",
+        "address": "Samarqand, Daxbed ko'chasi, 168A",
+        "working-time-tilte": "Ish vaqti",
+        "sun": "Yakshanba Yopiq",
+        "mon": "Dushanba 09:00–18:00",
+        "tue": "Seshanba 09:00–18:00",
+        "wed": "Chorshanba 09:00–18:00",
+        "thu": "Payshanba 08:00–18:00",
+        "fri": "Juma 08:00–18:00",
+        "sat": "Shanba 08:00–18:00",
+        "social-links": "Bizning ijtimoiy tarmoqlarimiz",
+        "social-text": "Eng so'nggi yangiliklar va mijozlar uchun maxsus takliflarni olish uchun obuna bo'ling",
+        "subtitle": "Klinika uchun yana bir kichik reklama",
+        "subtitle-2": "Klinikamiz haftasiga 7 kun 24 soat ishlaydi!",
+
+        "links-title": "Tezkor havolalar",
+        "copy": "Stomatologiya \"Dental Implantology\". Barcha huquqlar himoyalangan."
+    },
+    "form": {
+        "placeholder-phone": "Telefon raqamingizni kiriting",
+        "placeholder-name": "Ism va familiyangizni kiriting",
+        "order-call": "Qo'ng'iroq buyurtma qiling",
+        "phone": "Telefon raqami",
+        "date": "Sana",
+        "address": "Manzil",
+        "name": "Ism Familiya",
+        "first-name": "Ism",
+        "last-name": "Familiya",
+        "email": "Elektron pochta",
+        "message": "Xabarlar",
+
+        "create-appointment": "Uchrashuv yarating",
+        "create-review": "Sharh yaratish",
+        "review-form-title": "Sharhlar formasi",
+        "message-of-review": "Sharh xabari",
+        "send": "Yuborish"
+    },
+    "404": {
+        "title": "Sahifa Topilmadi",
+        "description": "Afsus! Siz izlagan sahifa mavjud emas. Iltimos, URL ni tekshiring yoki bosh sahifaga qayting.",
+        "go-home": "Bosh Sahifaga O'tish"
+    },
+    "others": {
+        "doctor-rating": "Doktor reytingi",
+        "experience": "Tajriba: {year} yil",
+        "specialization": "Mutaxassisligi",
+        "add-comment": "Fikr qoldiring"
+    }
+}

@@ -1,0 +1,150 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About Us",
+        "doctors": "Doctors",
+        "services": "Services",
+        "contacts": "Contacts",
+        "call": "Call now"
+    },
+    "home": {
+        "header-every-day-work": "{tag} 24 hours {br} 7 days {tagclose} a weekly {br} at your service",
+
+        "header-subtitle": "Healthy smile with our help!",
+        "header-title": "The best dentistry {tag} in Samarkand – {tag} Dental Implantology {svg} {tag} Center",
+        "header-description": "Your reliable dentistry in Samarkand - Dental Implantalogy Center For professional dental care in Samarkand, contact the Dental Implantalogy Center. Our team offers a wide range of services, including dental implants, teeth whitening, and tooth decay treatment. If you are looking for aesthetic dentistry or a solution to the problem of missing teeth in Samarkand, our clinic is your best choice.",
+        
+        "home-card-1-title": "Preventive examination",
+        "home-card-1-description": "Regular dental checkups help keep your teeth and gums healthy and prevent the development of serious diseases",
+        
+        "home-card-2-title": "Implantation",
+        "home-card-2-description": "Restore your confidence with implants, a durable and reliable solution for replacing missing teeth.",
+
+        "home-card-3-title": "Aesthetic dentistry",
+        "home-card-3-description": "Improve the appearance of your smile with our cosmetic dentistry services, including teeth whitening, luminaires and teeth reshaping.",
+        
+        
+        "home-about-us-subtitle": "More about us",
+        "home-about-us-title": "Welcome to our dental clinic!",
+        "home-about-us-description": "We are glad that you have chosen us to care for your health and the beauty of your smile. Our clinic is one of the leading in the industry, and we pride ourselves on providing our patients with quality services and personalized attention.",
+
+        "home-about-us-item-1": "Qualified specialists and continuous improvement",
+        "home-about-us-item-2": "20 years of experience in dentistry",
+        "home-about-us-item-3": "Modern equipment, individual approach, flexible schedule",
+        "home-about-us-item-4": "Trust and Excellence",
+
+        
+        "home-why-choice-us-subtitle": "Why choose us",
+        "home-why-choice-us-title": "Quality, professionalism and individual approach",
+        "home-why-choice-us-description-1": "Our dental office offers a wide range of services to keep your smile healthy and beautiful. We use only modern equipment and materials that ensure safety and comfort during procedures.",
+        "home-why-choice-us-description-2": "Our team of qualified specialists has extensive experience and is constantly improving their skills to provide services at the highest level. We value the trust of our patients and try to exceed their expectations. Choose us and enjoy a healthy and beautiful smile!",
+
+
+        "home-counst-info-1": "Happy clients",
+        "home-counst-info-2": "Year of experience",
+        "home-counst-info-3": "Experienced doctors",
+        "home-counst-info-4": "Appointments per day",
+
+
+        "home-services-subtitle": "Our services",
+        "home-services-title": "Comprehensive dental care for all ages",
+        "home-services-description": "Our dental clinic offers a wide range of services to keep your teeth and gums healthy and beautiful.",
+
+        
+        "home-blog-subtitle": "Our blog",
+        "home-blog-title": "Blog",
+        "home-blog-description": "Welcome to our blog! Here we share useful information and news from the world of dentistry.",
+
+           
+        "home-jumbotron-subtitle": "Regular checkups keep your smile healthy",
+        "home-jumbotron-title": "Why is it important to visit the dentist regularly?",
+        "home-jumbotron-description": "Regular visits to the dentist play a key role in maintaining oral health and preventing serious diseases. In this blog, we'll explain why regular checkups are important, how often you should visit the dentist, and the benefits of doing so. You'll learn how identifying problems early can prevent them from developing and save you time, money and stress in the future. Read our tips and be confident in the health of your smile!",
+
+        
+        "home-faqs-subtitle": "Frequently Asked Questions",
+        "home-faqs-title": "Learn more about our clinic",
+        "home-faqs-description": "Here you can find answers to the most frequently asked questions about our clinic. Learn more about our services, doctors, and equipment."
+        
+    },
+    "about": {
+        "subtitle": "Find out more about us",
+        "title": "About our clinic",
+        "description": "Welcome to our dental office, where your smiles are our priority. We offer modern treatment methods and the highest level of care. Learn more about our values ​​and mission.",
+
+        "subtitle-1": "About Us",
+        "title-1": "Trust, quality and professionalism",
+        "description-1": "Our dental clinic was founded in 2000 with the goal of providing quality dental services. Over the years, we have accumulated a lot of experience and have become one of the leading clinics in the industry. Our team of qualified specialists is constantly improving their skills to provide services at the highest level.",
+        "description-2": "We value the trust of our patients and try to exceed their expectations. Our clinic is equipped with modern equipment and materials that ensure the safety and comfort of our patients. We offer a wide range of services to keep your teeth and gums healthy and beautiful. Choose us and entrust your smile to the hands of professionals!"
+    },
+    "doctors": {
+        "subtitle": "Meet our doctors",
+        "title": "Our team of specialists",
+        "description": "Our doctors are experienced and qualified professionals dedicated to their work. Review the biographies and qualifications of our dentists to be confident in your choice."
+    },
+    "services": {
+        "subtitle": "Wide range of treatments",
+        "title": "Our services",
+        "all-services": "All Services",
+        "popular-title": "Popular services",
+        "list-of-services": "List of all our services",
+        "description": "We offer a wide range of dental services, from preventive examinations to complex surgical interventions. Learn more about how we can help you maintain a healthy, beautiful smile."
+    },
+    "contacts": {
+        "subtitle": "We are in touch",
+        "title": "We will consult {tag} for free!",
+        "description": "We will answer any question about treatment and select {tag} the appropriate program for you.",
+        "form-title": "Contact us",
+        "form-description": "We are always happy to help you",
+        "form-description-1": "Our experts will contact you shortly. Please provide your contact details and briefly describe your request. We value your time and strive to respond to all requests as quickly as possible."
+    },
+    "footer": {
+        "description": "We offer a wide range of services to keep your smile healthy. Our experienced specialists use modern technologies and an individual approach to each patient. Contact us to make an appointment and consultation.",
+        "concats-title": "Our contacts",
+        "address": "Samarkand, Dakhbed street, 168A",
+        "working-time-tilte": "Opening hours",
+        "sun": "Sunday Closed",
+        "mon": "Monday 09:00–18:00",
+        "tue": "Tuesday 09:00–18:00",
+        "wed": "Wednesday 09:00–18:00",
+        "thu": "Thursday 08:00–18:00",
+        "fri": "Friday 08:00–18:00",
+        "sat": "Saturday 08:00–18:00",
+        "social-links": "We are on social networks",
+        "social-text": "Subscribe to receive the latest news and special offers for customers",
+        "subtitle": "Another small advertisement for the clinic",
+        "subtitle-2": "Our clinic is open 24 hours a day, 7 days a week!",
+
+        "links-title": "Quick links",
+        "copy": "Dentistry \"Dental Implantology\". All rights reserved."
+    },
+    "form": {
+        "placeholder-phone": "Enter your phone number",
+        "placeholder-name": "Enter your first and last name",
+        "order-call": "Request a call now",
+        "phone": "Phone number",
+        "date": "Date",
+        "address": "Address",
+        "name": "First and last name",
+        "first-name": "First name",
+        "last-name": "Last name",
+        "email": "Email",
+        "message": "Messages",
+
+        "create-appointment": "Create an Appointment",
+        "create-review": "Create Review",
+        "review-form-title": "Form for reviews",
+        "message-of-review": "Message of review",
+        "send": "Send"
+    },
+    "404": {
+        "title": "Page Not Found",
+        "description": "Oops! The page you are looking for does not exist. Please check the URL or go back to the homepage.",
+        "go-home": "Go to Home Page"
+    },
+    "others": {
+        "doctor-rating": "Doctor rating",
+        "experience": "Experience: {year} years",
+        "specialization": "Specialization",
+        "add-comment": "Leave a comment"
+    }
+}
