@@ -37,18 +37,21 @@
                             :attributes="{ required: true, placeholder: $t('form.full-name-placeholder') }" />
                         <app-input
                             v-model="quickRecord.phone"
-                            v-mask="'+############'"
+                            v-mask="'+998 ## ### ## ##'"
                             :icon="FePhone"
                             :label="$t('form.phone')"
-                            :attributes="{ required: true, placeholder: $t('form.phone-placeholder'), 'v-mask': '#############' }" />
+                            :attributes="{ required: true, placeholder: '+998 XX XXX XX XX' }" />
                         <app-select
                             v-model="quickDetails.service"
                             :label="$t('form.service')"
                             :items="serviceOptions"
                             :placeholder="$t('form.service-placeholder')" />
-                        <app-btn :disabled="isSubmitting" type="submit" class="w-full rounded-full py-2! xl:mt-7">
-                            {{ isSubmitting ? $t('form.submitting') : $t('form.submit') }}
-                        </app-btn>
+                        <div class="pt-0 md:pt-0 xl:pt-0">
+                            <span class="hidden md:block xl:hidden opacity-0 mb-2">*</span>
+                            <app-btn :disabled="isSubmitting" type="submit" class="w-full rounded-full py-2! xl:mt-7">
+                                {{ isSubmitting ? $t('form.submitting') : $t('form.submit') }}
+                            </app-btn>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -230,9 +233,9 @@
                                     :attributes="{ required: true, placeholder: $t('form.full-name-placeholder') }" />
                                 <app-input
                                     v-model="contactRecord.phone"
-                                    v-mask="'+############'"
+                                    v-mask="'+998 ## ### ## ##'"
                                     :label="$t('form.phone')"
-                                    :attributes="{ required: true, placeholder: $t('form.phone-placeholder'), 'v-mask': '#############' }" />
+                                    :attributes="{ required: true, placeholder: '+998 XX XXX XX XX' }" />
                             </div>
                             <app-select
                                 v-model="contactDetails.service"
